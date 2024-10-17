@@ -1,21 +1,16 @@
-const editor = document.getElementById('editor');
-const lineNumbers = document.getElementById('lineNumbers');
-
-// Update line numbers based on the textarea content
-editor.addEventListener('input', updateLineNumbers);
-editor.addEventListener('scroll', syncScroll);
+function clearEditor() {
+    const editor = document.querySelector('.text-editor');
+    editor.innerHTML = ''; // Clear the content
+    updateLineNumbers(); // Update line numbers
+}
 
 function updateLineNumbers() {
-    const lines = editor.value.split('\n').length;
-    lineNumbers.innerHTML = '';
+    const editor = document.querySelector('.text-editor');
+    const lineNumbers = document.getElementById('lineNumbers');
+    const lines = editor.innerHTML.split('<br>').length; // Count lines
+    lineNumbers.innerHTML = ''; // Clear previous line numbers
+
     for (let i = 1; i <= lines; i++) {
-        lineNumbers.innerHTML += i + '<br>';
+        lineNumbers.innerHTML += i + '<br>'; // Add new line numbers
     }
 }
-
-function syncScroll() {
-    lineNumbers.scrollTop = editor.scrollTop;
-}
-
-// Initialize line numbers on page load
-updateLineNumbers();
