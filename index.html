@@ -3,30 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Themed Text Editor</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Dark Themed Text Editor</title>
 </head>
 <body>
     <div class="editor-container">
-        <div class="toolbar">
-            <button onclick="document.execCommand('bold')"><b>B</b></button>
-            <button onclick="document.execCommand('italic')"><i>I</i></button>
-            <button onclick="document.execCommand('underline')"><u>U</u></button>
-            <button onclick="document.execCommand('insertOrderedList')">OL</button>
-            <button onclick="document.execCommand('insertUnorderedList')">UL</button>
-            <button onclick="document.execCommand('justifyLeft')">Left</button>
-            <button onclick="document.execCommand('justifyCenter')">Center</button>
-            <button onclick="document.execCommand('justifyRight')">Right</button>
-            <button onclick="document.execCommand('createLink', false, prompt('Enter URL:',''))">Link</button>
-            <button onclick="document.execCommand('unlink')">Unlink</button>
-            <button onclick="document.execCommand('foreColor', false, prompt('Enter Color:','white'))">Color</button>
-            <button onclick="document.execCommand('insertImage', false, prompt('Enter Image URL:',''))">Image</button>
-            <button onclick="clearEditor()">Clear</button>
-        </div>
-        <div class="editor-wrapper">
-            <div class="line-numbers" id="lineNumbers"></div>
-            <div class="text-editor" contenteditable="true" oninput="updateLineNumbers()"></div>
-        </div>
+        <div class="line-numbers" id="lineNumbers"></div>
+        <textarea id="editor" placeholder="Write your code here..."></textarea>
     </div>
     <script src="script.js"></script>
 </body>
