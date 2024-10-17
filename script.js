@@ -1,16 +1,21 @@
-function clearEditor() {
-    const editor = document.querySelector('.text-editor');
-    editor.innerHTML = ''; // Clear the content
-    updateLineNumbers(); // Update line numbers
-}
+const editor = document.getElementById('editor');
+const lineNumbers = document.getElementById('lineNumbers');
+
+// Update line numbers based on the textarea content
+editor.addEventListener('input', updateLineNumbers);
+editor.addEventListener('scroll', syncScroll);
 
 function updateLineNumbers() {
-    const editor = document.querySelector('.text-editor');
-    const lineNumbers = document.getElementById('lineNumbers');
-    const lines = editor.innerHTML.split('<br>').length; // Count lines
-    lineNumbers.innerHTML = ''; // Clear previous line numbers
-
+    const lines = editor.value.split('\n').length;
+    lineNumbers.innerHTML = '';
     for (let i = 1; i <= lines; i++) {
-        lineNumbers.innerHTML += i + '<br>'; // Add new line numbers
+        lineNumbers.innerHTML += i + '<br>';
     }
 }
+
+function syncScroll() {
+    lineNumbers.scrollTop = editor.scrollTop;
+}
+
+// Initialize line numbers on page load
+updateLineNumbers();
