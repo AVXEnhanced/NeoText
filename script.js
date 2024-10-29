@@ -1,35 +1,29 @@
-// Function to apply text formatting
-function formatText(command) {
-    document.execCommand(command, false, null);
+const editor = document.getElementById('editor');
+const lineNumbers = document.getElementById('lineNumbers');
+
+// Initialize line numbers on load
+updateLineNumbers();
+
+// Event listener to update line numbers on input
+editor.addEventListener('input', updateLineNumbers);
+editor.addEventListener('scroll', () => {
+  lineNumbers.scrollTop = editor.scrollTop;
+});
+
+function updateLineNumbers() {
+  const lineCount = editor.value.split('\n').length;
+  lineNumbers.innerHTML = Array.from({ length: lineCount }, (_, i) => i + 1).join('<br>');
 }
 
-// Function to change text size
-function changeTextSize(action) {
-    const editor = document.getElementById('editor');
-    let fontSize = window.getComputedStyle(editor).fontSize;
-    fontSize = parseInt(fontSize);
+// Simple syntax highlighting for keywords
+const keywords = ["function", "return", "const", "let", "var", "if", "else", "for", "while", "class"];
+editor.addEventListener('input', highlightSyntax);
 
-    // Adjust font size based on action
-    if (action === 'increase') {
-        fontSize += 2;
-    } else if (action === 'decrease') {
-        fontSize -= 2;
-    }
-
-    // Apply the new font size
-    editor.style.fontSize = fontSize + 'px';
-}
-
-// Function to download the editor content as a .txt file
-function downloadText() {
-    const editorContent = document.getElementById('editor').innerText;
-    const blob = new Blob([editorContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-
-    link.href = url;
-    link.download = 'NeoTextEditorContent.txt';
-    link.click();
-
-    URL.revokeObjectURL(url); // Clean up the URL
+function highlightSyntax() {
+  const value = editor.value;
+  const highlighted = value.replace(
+    new RegExp(`\\b(${keywords.join('|')})\\b`, 'g'),
+    '<span class="keyword">$1</span>'
+  );
+  editor.innerHTML = highlighted;
 }
