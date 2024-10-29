@@ -3,10 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Advanced Dark Mode Text Editor</title>
+<title>Super Advanced Dark Mode Text Editor</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="menu-bar">
+  <button onclick="saveFile()">File</button>
+  <button onclick="toggleTheme()">Toggle Theme</button>
+  <button onclick="toggleLineNumbers()">Line Numbers</button>
+</div>
 
 <div class="editor-container">
   <div class="line-numbers" id="lineNumbers"></div>
