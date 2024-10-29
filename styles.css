@@ -1,64 +1,61 @@
-/* General Styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+/* General styling */
+body {
+  background-color: #121212;
+  color: #E0E0E0;
+  font-family: monospace;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Container for the editor */
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #333;
-    border-radius: 8px;
-    color: #fff;
+.editor-container {
+  display: flex;
+  width: 80%;
+  height: 80%;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
 }
 
-/* Title */
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #00ff00;
+/* Line numbers styling */
+.line-numbers {
+  background-color: #1e1e1e;
+  color: #616161;
+  padding: 10px;
+  font-size: 1rem;
+  border-right: 1px solid #333;
+  overflow: hidden;
+  text-align: right;
+  user-select: none;
 }
 
-/* Menu buttons */
-.menu {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    justify-content: center;
+/* Editor styling */
+.editor {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+  padding: 10px;
+  border: none;
+  outline: none;
+  width: 100%;
+  resize: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  white-space: nowrap;
+  overflow-x: auto;
 }
 
-.menu button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #555;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* Scrollbar styles */
+.editor::-webkit-scrollbar, .line-numbers::-webkit-scrollbar {
+  width: 8px;
 }
 
-.menu button:hover {
-    background-color: #777;
+.editor::-webkit-scrollbar-thumb, .line-numbers::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
 }
 
-/* Editor styles */
-#editor {
-    min-height: 300px;
-    padding: 10px;
-    background-color: #222;
-    color: #ddd;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    overflow-y: auto;
-}
-
-/* Placeholder style for the editor */
-#editor:empty::before {
-    content: attr(placeholder);
-    color: #666;
+.editor::-webkit-scrollbar-thumb:hover, .line-numbers::-webkit-scrollbar-thumb:hover {
+  background: #777;
 }
