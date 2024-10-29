@@ -16,31 +16,12 @@
             <button onclick="document.execCommand('undo')">Undo</button>
             <button onclick="document.execCommand('redo')">Redo</button>
             <button onclick="document.execCommand('selectAll')">Select All</button>
-            <!-- New buttons to change text size -->
             <button onclick="changeTextSize('increase')">Increase Text Size</button>
             <button onclick="changeTextSize('decrease')">Decrease Text Size</button>
+            <button onclick="downloadText()">Download as .txt</button>
         </div>
         <div id="editor" contenteditable="true" placeholder="Type whatever you shall type... "></div>
     </div>
-
-    <script>
-        function formatText(command) {
-            document.execCommand(command, false, null);
-        }
-
-        function changeTextSize(action) {
-            const editor = document.getElementById('editor');
-            let fontSize = window.getComputedStyle(editor).fontSize;
-            fontSize = parseInt(fontSize);
-
-            if (action === 'increase') {
-                fontSize += 2;
-            } else if (action === 'decrease') {
-                fontSize -= 2;
-            }
-
-            editor.style.fontSize = fontSize + 'px';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
